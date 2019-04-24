@@ -21,3 +21,6 @@ A LAN hosted web application written in PHP and HTML with a mySQL database.
 
 
 ## USER SIGNUP
+
+## USER LOGIN
+![Login](https://user-images.githubusercontent.com/43212947/56628973-daa56a00-6619-11e9-858e-a39a9d51b0d9.png)

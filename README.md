@@ -3,7 +3,7 @@ Secure-File-Database-Project
 A LAN hosted web application written in PHP and HTML with a mySQL database.
 
 ## Features
-###--User System--
+--User System--
 -User Signup
 -User-login
 -User Home Panel

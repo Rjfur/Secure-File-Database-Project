@@ -1,0 +1,24 @@
+body
+{
+	background:#aadcc1 !important;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	text-align:center;
+}
+#body
+{
+	margin-top:100px;
+}
+
+#body table
+{
+	margin:0 auto;
+	
+	bottom:50px;
+}
+
+table td,th
+{
+	padding:20px;
+	border: solid #9fa8b0 1px;
+	border-collapse:collapse;
+}

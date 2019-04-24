@@ -1,0 +1,86 @@
+<?php
+// Initialize the session
+include "config.php";
+session_start();
+
+$username = $_SESSION["username"] ;
+$passwordd = $_SESSION["password_set_date"];
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit; 
+}
+
+$date = new DateTime($passwordd);
+$interval = new DateInterval('P1M');
+$new_date = $date->add($interval);
+
+$neww = $new_date->format('Y-m-d');
+$old_date = $date->format('Y-m-d');
+$date1Timestamp = strtotime($passwordd);
+$date2Timestamp = strtotime($neww);
+ 
+//Calculate the difference.
+$difference = $date2Timestamp - $date1Timestamp;
+ 
+// echo $difference;
+$days = floor($difference / (60*60*24) );
+ 
+echo "<p style='color:red'>you have $days days left to change password</p>
+<a href='reset.php'>Reset Password</a>";
+?>
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+      <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif; text-align: center; }
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="page-header">
+        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+    </div>
+
+    <div class="input-container">
+ <form action="upload.php" method="post" enctype="multipart/form-data">
+    Select Files to Upload:
+    <br>
+    <br>
+    <input type="file" name="file" >
+    <br>
+    <input type="submit" name="submit" value="UPLOAD">
+</form>
+       <a href="allfiles.php" class="btn btn-primary" style="margin-top:70px;">View your files</a>
+</div>
+<div class="container">
+    <p>
+        <a href="reset.php" class="btn btn-warning">Reset Your Password</a>
+        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+    </p>
+  </div>
+    <style>
+        body {
+  font-family: sans-serif;
+}
+.input-container {
+  margin: 3em auto;
+  max-width: 300px;
+  background-color: #EDEDED;
+  border: 1px solid #DFDFDF;
+  border-radius: 5px;
+}
+input[type='file'] {
+    margin-left: 40px;
+  display: block;
+}
+    </style>
+</body>
+</html>
